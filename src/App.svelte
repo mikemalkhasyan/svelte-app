@@ -1,6 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import Window from "./screens/Window.svelte";
+	import Game from "./screens/Game.svelte";
 	import {select} from './select';
 
 	let celebs_promise;
@@ -15,7 +16,7 @@
 		state = `playing`;
 	}
 	const load_celebs = async () => {
-		const res = await fetch('https://cameo-explorer.netlify.app/celebs.json ');
+		const res = await fetch('https://cameo-explorer.netlify.app/celebs.json');
 		const data = await res.json();
 
 		const lookup = new Map();
@@ -49,7 +50,7 @@
 	{#if state === 'welcome'}
 		<Window on:select={start} />
 	{:else if state === 'playing'}
-		<p>game screen goes here</p>
+		<Game {selection} />
 	{/if}
 </main>
 
