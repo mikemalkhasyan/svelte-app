@@ -2,11 +2,15 @@
 	import Window from "./screens/Window.svelte";
 
 	let state = 'welcome' // or 'playing';
+
+	const start = (e) => {
+		console.log(e);
+	}
 </script>
 
 <main>
 	{#if state === 'welcome'}
-		<Window />
+		<Window on:select={start} />
 	{:else if state === 'playing'}
 		<p>playing screen goes here</p>
 	{/if}
